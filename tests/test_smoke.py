@@ -3,21 +3,21 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from src import social-eng-physical_main
+from src import social_eng_physical_main
 
 
 def test_smoke_structure():
-    out = social-eng-physical_main.smoke("x", "y")
+    out = social_eng_physical_main.smoke("x", "y")
     assert out["ok"] is True
 
 
 def test_main_returns_0():
-    assert social-eng-physical_main.main([]) == 0
+    assert social_eng_physical_main.main([]) == 0
 
 
 def test_main_json_output():
     import contextlib, io, json
     with contextlib.redirect_stdout(io.StringIO()) as buf:
-        assert social-eng-physical_main.main(["--json"]) == 0
+        assert social_eng_physical_main.main(["--json"]) == 0
     data = json.loads(buf.getvalue())
     assert data["project"] == "P12"
